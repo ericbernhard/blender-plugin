@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2026 Scenario Inc.
+# SPDX-License-Identifier: GPL-3.0-or-later
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+#
+# CodeRabbit configuration for blender-plugin. It adds to the organization's central CodeRabbit
+# configuration: with inheritance on, lists are combined and a value set here wins over the
+# central one. Keep here only what is specific to this repository.
+#
+# Which copy of this file a review reads: for a pull request from a branch of this repository,
+# opened by an organization member or a collaborator with write access, the one on the pull
+# request branch; for any other pull request, forks included, the one on its base commit. A
+# branch created before a change picks it up once it includes that change.
+#
+# To see the settings in force and where each comes from, comment
+# "@coderabbitai configuration" on any pull request.
+
+inheritance: true
+
+reviews:
+  profile: assertive
+  path_instructions:
+    - path: "**/*.py"
+      instructions: >-
+        Blender plugin. Beyond the editor plugin rules in the baseline: operators and timers must
+        not block the Blender main thread with network calls; a paid call stays bound to the account
+        that prepared it and is not resent after an unknown outcome; stored credentials must be
+        scoped to the signed in account and never written into the .blend file.
